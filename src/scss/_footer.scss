@@ -1,0 +1,25 @@
+@use 'variables'as var;
+
+footer {
+    margin: 2rem 15vw;
+    text-align: center;
+    font-size: 1rem;
+    letter-spacing: 3px;
+    color: var.$veryDarkCyan;
+    text-align: center;
+    line-height: 1.7;
+
+    @media screen and (min-width: 800px) {
+        margin: 2rem 0;
+    }
+
+    a {
+        text-decoration: none;
+        color: var.$darkGrayishCyan;
+
+        &:hover {
+            color: var.$strongCyan;
+        }
+    }
+
+}

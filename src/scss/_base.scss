@@ -1,0 +1,125 @@
+@use 'variables'as var;
+@use 'config'as config;
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var.$lightGrayishCyan;
+    color: var.$darkGrayishCyan;
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+
+    @media screen and (min-height: 670px) {
+        height: 100vh;
+    }
+
+    @media screen and (min-width: 800px) {
+        @include config.flexCenter(column);
+    }
+}
+
+main {
+    width: 100%;
+
+    @media screen and (min-width: 800px) {
+        @include config.flexCenter(column);
+    }
+
+    @media screen and (min-width: 1440px) {
+        height: 100%;
+    }
+}
+
+header {
+    height: 145px;
+    @include config.flexCenter(column);
+}
+
+input {
+    margin: 5px 0;
+    padding: 8px 15px;
+    filter: contrast(0.96);
+    @include config.btn-n-input-typography;
+    text-align: right;
+    background-color: var.$lightGrayishCyan2;
+    color: var.$veryDarkCyan;
+    border: 2px solid transparent;
+    width: 100%;
+
+    &:hover {
+        border-color: var.$strongCyan;
+        cursor: pointer;
+    }
+
+    &:focus-visible {
+        outline: none;
+        border-color: var.$strongCyan;
+    }
+
+    &::placeholder {
+        color: var.$darkGrayishCyan2;
+    }
+
+    &.--error {
+        border: 2px solid red;
+    }
+
+    /* Chrome, Safari, Edge, Opera */
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    &[input=number] {
+        -moz-appearance: textfield;
+    }
+
+}
+
+
+label {
+    display: block;
+    position: relative;
+
+    &::after {
+        content: 'Can\'t be zero';
+        color: var.$error;
+        position: absolute;
+        right: 0;
+        font-size: 1rem;
+        visibility: hidden;
+
+        @media screen and (max-width: 355px) {
+            position: relative;
+            display: block;
+        }
+    }
+
+    &.--error::after {
+        visibility: visible;
+    }
+}
+
+button {
+    padding: 5px 0;
+    width: 100%;
+    @include config.btn-n-input-typography;
+
+    background-color: var.$veryDarkCyan;
+    color: var.$white;
+    border: 2px solid transparent;
+    cursor: pointer;
+
+    &:hover {
+        background-color: var.$lightGrayishCyan;
+        color: var.$veryDarkCyan;
+    }
+
+    &:active,
+    &:focus {
+        background-color: var.$strongCyan;
+        color: var.$veryDarkCyan;
+    }
+}

@@ -1,0 +1,54 @@
+@use 'variables'as var;
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+@function setImgOnInput($image) {
+    @if ($image=='dollar') {
+        @return url('../../dist/images/icon-dollar.svg');
+    }
+
+    @else if ($image=='person') {
+        @return url('../../dist/images/icon-person.svg');
+    }
+}
+
+@mixin btn-n-input-typography {
+    font-family: 'Space Mono', monospace;
+    font-size: 24px;
+    font-weight: 700;
+    border-radius: 5px;
+}
+
+@mixin tip-result-content-layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin tip-result-content-sub-txt {
+    font-size: 13px;
+    color: var.$darkGrayishCyan2;
+}
+
+@mixin tip-result-content-num-amount {
+    font-size: 2rem;
+    color: var.$strongCyan;
+}
+
+@mixin imageOnInput($img) {
+    position: relative;
+    background-image: setImgOnInput($img);
+    background-repeat: no-repeat;
+    background-position: left 1rem center;
+}
+
+@mixin flexCenter($direction) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: center;
+    align-items: center;
+}

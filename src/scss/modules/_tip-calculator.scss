@@ -1,0 +1,244 @@
+@use '../variables'as var;
+@use '../config'as config;
+
+.tip-calculator {
+    margin: 0 auto;
+    background-color: var.$white;
+    padding: 35px 25px;
+    border-radius: 20px;
+    max-width: 30rem;
+
+    @media screen and (min-width: 800px) {
+        max-width: 56.25rem;
+        margin: 0 1rem;
+        padding: 35px;
+    }
+
+    @media screen and (min-width: 1440px) {
+        max-width: 61.875rem;
+        width: 920px;
+        height: 481px;
+        padding: 35px 45px;
+    }
+
+    &__form {
+
+        @media screen and (min-width: 800px) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto 1fr auto;
+            grid-template-areas:
+                "bill result"
+                "percentage result"
+                "count result";
+        }
+
+        &>div {
+            margin-bottom: 35px;
+
+            @media screen and (min-width: 800px) {
+                margin-bottom: 20px;
+            }
+
+            @media screen and (min-width: 1440px) {
+                margin-bottom: 30px;
+            }
+
+            &:nth-of-type(3) {
+
+                @media screen and (min-width: 1440px) {
+                    margin-bottom: 0;
+                }
+            }
+
+            &:last-of-type {
+
+                @media screen and (min-width: 1440px) {
+                    margin-bottom: 0;
+                }
+            }
+
+        }
+    }
+
+    &__bill {
+
+        @media screen and (min-width: 800px) {
+            grid-area: bill;
+        }
+
+        input {
+            @include config.imageOnInput('dollar');
+        }
+    }
+
+    &__percentage {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "heading heading"
+            "btn1 btn2"
+            "btn3 btn4"
+            "btn5 input";
+        grid-gap: 15px;
+
+        @media screen and (min-width: 800px) {
+            grid-area: percentage;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-areas: "heading heading heading"
+                "btn1 btn2 btn3"
+                "btn4 btn5 input";
+        }
+
+        @media screen and (min-width: 1440px) {
+            grid-gap: 10px 0px;
+        }
+
+        label {
+            grid-area: heading;
+        }
+
+        input {
+
+            @media screen and (min-width: 1440px) {
+                max-width: 117px;
+                max-height: 48px;
+            }
+
+            &::placeholder {
+                color: var.$darkGrayishCyan;
+
+                @media screen and (min-width: 800px) {
+                    font-size: 1.2rem;
+                }
+
+                @media screen and (min-width: 1000px) {
+                    font-size: 1.4rem;
+                }
+
+
+            }
+
+            @media screen and (max-width: 325px) {
+                min-height: 50px;
+                font-size: 110%;
+                text-align: left;
+            }
+
+            @media screen and (min-width: 376px) {
+                text-align: center;
+            }
+        }
+
+        button {
+
+            @media screen and (min-width: 1440px) {
+                max-width: 117px;
+                max-height: 48px;
+            }
+        }
+    }
+
+    &__count {
+
+        @media screen and (min-width: 800px) {
+            grid-area: count;
+        }
+
+        input {
+            @include config.imageOnInput('person');
+        }
+    }
+
+    &__result {
+        background-color: var.$veryDarkCyan;
+        padding: 24px 20px;
+        border-radius: 20px;
+
+        @media screen and (min-width: 800px) {
+            grid-area: result;
+            margin: 0 0 0 2rem;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        @media screen and (min-width: 1440px) {
+            margin-bottom: 0;
+            margin-left: 3rem;
+        }
+
+        &__txt {
+
+            &__tip-amount {
+                @include config.tip-result-content-layout;
+                margin-bottom: 35px;
+
+                &__txt {
+
+                    div {
+                        margin: 0;
+                    }
+
+                    p {
+
+                        &:first-of-type {
+                            color: var.$white;
+                        }
+
+                        &:last-of-type {
+                            @include config.tip-result-content-sub-txt;
+                        }
+                    }
+                }
+
+                &__num {
+                    @include config.tip-result-content-num-amount;
+                }
+            }
+
+            &__total-amount {
+                @include config.tip-result-content-layout;
+
+                &__txt {
+
+                    p {
+
+                        &:first-of-type {
+                            color: var.$white;
+                        }
+
+                        &:last-of-type {
+                            @include config.tip-result-content-sub-txt;
+                        }
+                    }
+                }
+
+                &__num {
+                    @include config.tip-result-content-num-amount;
+                }
+
+            }
+        }
+
+        p {
+            margin: 0;
+        }
+
+        button {
+            background-color: var.$strongCyan;
+            color: var.$veryDarkCyan;
+            text-transform: uppercase;
+            margin-top: 30px;
+
+            &:hover {
+                background-color: var.$lightGrayishCyan;
+                color: var.$veryDarkCyan;
+            }
+        }
+
+    }
+}
