@@ -21,6 +21,10 @@
         padding: 35px 45px;
     }
 
+    h1 {
+        display: none;
+    }
+
     &__form {
 
         @media screen and (min-width: 800px) {
@@ -31,6 +35,10 @@
                 "bill result"
                 "percentage result"
                 "count result";
+        }
+
+        h2 {
+            font-size: 1rem;
         }
 
         &>div {
