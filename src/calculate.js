@@ -1,9 +1,10 @@
-import {    
-    inputBill, 
-    inputCount, 
-    resultTipAmount, 
-    resultTotalAmount }
-from './variables.js';
+import {
+    inputBill,
+    inputCount,
+    resultTipAmount,
+    resultTotalAmount
+}
+    from './variables.js';
 
 export const calculate = targetValue => {
     let bill = parseFloat(inputBill.value);
@@ -11,7 +12,7 @@ export const calculate = targetValue => {
     let percentToDecimal = targetValue / 100;
     let tipAmount = (bill * percentToDecimal);
     let tipAmountPerPerson = (bill * percentToDecimal) / count;
-    let total = bill + tipAmount;
+    let total = (bill + tipAmount) / count;
 
     resultTipAmount.textContent = `$${tipAmountPerPerson.toFixed(2)}`;
     resultTotalAmount.textContent = `$${total.toFixed(2)}`;
