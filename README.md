@@ -4,8 +4,8 @@
 
 ### Links
 
--   Solution URL: [here](https://www.frontendmentor.io/solutions/time-tracking-dashboard-built-with-html-sass-vanilla-js-gsap-SJBs0dWm9)
--   Live Site URL: [here](https://time-tracking-dashboard-puce.vercel.app/)
+-   Solution URL: [here](https://www.frontendmentor.io/solutions/tip-calculator-app-built-with-webpack5-sass-and-vanilla-js-VQTbzsRao)
+-   Live Site URL: [here](https://tip-calculator-app-theta.vercel.app/)
 
 ### Built with
 
