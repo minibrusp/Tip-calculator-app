@@ -1,24 +1,18 @@
-import {
-    inputBill,
-    inputCount,
-    resultTipAmount,
-    resultTotalAmount
-}
-    from './variables.js';
+import { inputBill, inputCount, resultTipAmount, resultTotalAmount } from './variables.js';
 
-export const calculate = targetValue => {
-    let bill = parseFloat(inputBill.value);
-    let count = parseFloat(inputCount.value);
-    let percentToDecimal = targetValue / 100;
-    let tipAmount = (bill * percentToDecimal);
-    let tipAmountPerPerson = (bill * percentToDecimal) / count;
-    let total = (bill + tipAmount) / count;
+export default function calculate(tipPercentage) {
+   let bill = parseFloat(inputBill.value)
+   let count = parseFloat(inputCount.value)
+   let percentage = parseInt(tipPercentage.replace('%', '')) / 100
+   let fields = [bill, count, percentage]
 
-    resultTipAmount.textContent = `$${tipAmountPerPerson.toFixed(2)}`;
-    resultTotalAmount.textContent = `$${total.toFixed(2)}`;
-}
+   if (fields.some(value => isNaN(value))) return
 
-export const resetOutput = () => {
-    resultTipAmount.textContent = `$0.00`;
-    resultTotalAmount.textContent = `$0.00`;
+   let tipAmount = (bill * percentage)
+   let tipAmountPerPerson = tipAmount / count
+   let totalPerPerson = (bill + tipAmount) / count
+
+   resultTipAmount.textContent = tipAmountPerPerson.toFixed(2)
+   resultTotalAmount.textContent = totalPerPerson.toFixed(2)
+
 }

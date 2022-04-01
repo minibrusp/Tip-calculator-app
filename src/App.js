@@ -1,56 +1,35 @@
-import {
-    tipButtons, 
-    customPercentage, 
-    resetButton, 
-    inputBill, 
-    inputCount, 
-} from './variables.js';
-import { calculate, resetOutput } from './calculate.js';
-import { errorHandler, checkInputField, isInputPercentEmpty } from './errorHandlers.js';
-import { stringPercentToFloat } from './stringConverter.js';
 import './scss/main.scss';
+import { tipButtons, resetButton, formInputs } from './variables.js';
+import calculate from './calculate.js'
+import { grandReset, resetPercentage } from './resets.js'
+
+let tipPercentage = ''
 
 tipButtons.forEach(button => {
     button.addEventListener('click', event => {
-        event.preventDefault();
+        event.preventDefault()
+        resetPercentage(true)
+        event.target.classList.add('active')
+        tipPercentage = event.target.value
+        calculate(tipPercentage)
+    })
+})
 
-        if(checkInputField(inputBill, inputCount) !== true) {
-            calculate(stringPercentToFloat(event.target.value));
+formInputs.forEach(input => {
+    input.addEventListener('keyup', event => {
+
+        if (event.target.classList.contains('custom')) {
+            resetPercentage(false)
+            tipPercentage = event.target.value
         }
-    });
-});
 
-customPercentage.addEventListener('keyup', () => {
-
-
-    if(checkInputField(inputBill, inputCount) !== true) {
-        if(isInputPercentEmpty(customPercentage.value) === true) return resetOutput();
-
-        calculate(stringPercentToFloat(customPercentage.value));
-    }
-});
-
-customPercentage.addEventListener('focus', () => {
-
-    if(checkInputField(inputBill, inputCount) !== true) {
-        if(isInputPercentEmpty(customPercentage.value) === true) return resetOutput();
-
-        calculate(stringPercentToFloat(customPercentage.value));
-    }
-});
+        calculate(tipPercentage)
+    })
+})
 
 resetButton.addEventListener('click', event => {
-    event.preventDefault();
-    inputBill.value = '';
-    count.value = '';
-    customPercentage.value = '';
-    resetOutput();
-    errorHandler(false, inputBill);
-    errorHandler(false, inputCount);
-
-});
-
-
-
+    event.preventDefault()
+    grandReset()
+})
 
 

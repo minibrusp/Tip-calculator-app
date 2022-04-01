@@ -118,8 +118,11 @@ button {
     }
 
     &:active,
-    &:focus {
+    &:focus,
+    &.active {
         background-color: var.$strongCyan;
         color: var.$veryDarkCyan;
     }
+
+    
 }
